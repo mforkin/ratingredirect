@@ -134,11 +134,18 @@
       max-width: 500px;
       margin: 20px auto;
     }
+    .email-link {
+      display: none;
+    }
+    .email-link.show {
+      display: block;
+    }
     
   </style>
 </head>
 <body>
-  <h1></h1>
+  <h1>Canyon Pain and Spine</h1>
+  <h2>How did we do?</h2>
   <span class="rating_stars rating_0">
     <span class='s' data-low='0.5' data-high='1'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
     <span class='s' data-low='1.5' data-high='2'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
@@ -158,7 +165,7 @@
     <span class='r r5' data-rating='5' data-value='5'></span>
   </span>
 
-  <div class="values">
+  <div class="values" style="display: none;">
     <div>
       <label>Rating</label><input type="text" id="rating" value="0" />
     </div>
@@ -167,10 +174,15 @@
     </div>
   </div>
 
-  <div class="info">
-    <p>The above textboxes should be hidden fields, but have been made textboxes to display the values when you click.</p>
-    <p>The 'Rating' value can be used for class/id based changes to this if wanting to use a background sprite to manage the stars instead.</p>
+  <div class="links">
+    <div class="google-review">
+	<a href="google.com">Review us on Google</a>
+    </div>
+    <div class="email-link">
+   	<a href="#">Email us your concerns</a>
+    </div>
   </div>
+
   <script>
     jQuery(document).ready(function ($) {
       $(".rating_stars span.r")
@@ -205,6 +217,10 @@
     
           var rating = $(this).data("rating");
           $("#rating").val(rating);
+
+	  if (value < 3.5) {
+            $(".links .email-link").addClass("show");
+          }
     
           highlight_star(value);
         });
