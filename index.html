@@ -1,132 +1,225 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Experience Feedback</title>
+  <title>Feedback</title>
   <style>
-    body {
-      font-family: sans-serif;
-      color: #333;
-      background-color: #fff;
-    }
-
-    h1 {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      margin-top: 0;
-    }
-
-    div#rating {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    i.fa-star {
+    .rating_stars {
+      margin-top: 15px;
+      display: inline-block;
       font-size: 20px;
-      color: #ccc;
-      margin: 0 10px;
+      font-weight: 200;
+      color: #918f8f;
+      position: relative;
     }
-
-    i.fa-star.highlighted {
-      color: #000;
-    }
-
-    div#feedback {
+    
+    .rating_stars span .fa,
+    .rating_stars span.active-low .fa-star-o,
+    .rating_stars span.active-high .fa-star-o {
       display: none;
+    }
+    
+    .rating_stars span .fa-star-o {
+      display: inline-block;
+    }
+    
+    .rating_stars span.s.active-high .fa-star {
+      display: inline-block;
+      color: #feb645;
+    }
+    
+    .rating_stars span.s.active-low .fa-star-half-o {
+      display: inline-block;
+      color: #feb645;
+    }
+    
+    .rating_stars span.r {
+      position: absolute;
+      top: 0;
+      height: 20px;
+      width: 10px;
+      left: 0;
+    }
+    
+    .rating_stars span.r.r0_5 {
+      left: 0px;
+    }
+    .rating_stars span.r.r1 {
+      left: 10px;
+      width: 11px;
+    }
+    .rating_stars span.r.r1_5 {
+      left: 21px;
+      width: 13px;
+    }
+    .rating_stars span.r.r2 {
+      left: 34px;
+      width: 12px;
+    }
+    .rating_stars span.r.r2_5 {
+      left: 46px;
+      width: 12px;
+    }
+    .rating_stars span.r.r3 {
+      left: 58px;
+      width: 11px;
+    }
+    .rating_stars span.r.r3_5 {
+      left: 69px;
+      width: 12px;
+    }
+    .rating_stars span.r.r4 {
+      left: 81px;
+      width: 12px;
+    }
+    .rating_stars span.r.r4_5 {
+      left: 93px;
+      width: 12px;
+    }
+    .rating_stars span.r.r5 {
+      left: 105px;
+      width: 12px;
+    }
+    
+    /* Just to make things look pretty ;) */
+    html,
+    body {
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      height: 100%;
+      color: #eee;
+      background: #7d7e7d; /* Old browsers */
+      /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+      background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2Q3ZTdkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBlMGUwZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+      background: -moz-linear-gradient(
+        -45deg,
+        #7d7e7d 0%,
+        #0e0e0e 100%
+      ); /* FF3.6+ */
+      background: -webkit-gradient(
+        linear,
+        left top,
+        right bottom,
+        color-stop(0%, #7d7e7d),
+        color-stop(100%, #0e0e0e)
+      ); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(
+        -45deg,
+        #7d7e7d 0%,
+        #0e0e0e 100%
+      ); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(
+        -45deg,
+        #7d7e7d 0%,
+        #0e0e0e 100%
+      ); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, #7d7e7d 0%, #0e0e0e 100%); /* IE10+ */
+      background: linear-gradient(135deg, #7d7e7d 0%, #0e0e0e 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+    }
+    label {
+      width: 100px;
+      display: inline-block;
+      text-align: right;
+      margin-right: 10px;
+    }
+    input {
+      width: 50px;
+      text-align: center;
+    }
+    .values {
       margin-top: 20px;
     }
-
-    textarea#feedback-text {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      border: 1px solid #ccc;
+    .info {
+      max-width: 500px;
+      margin: 20px auto;
     }
-
-    button#submit-feedback {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      background-color: #ccc;
-      color: #000;
-    }
-
-    button#submit-feedback:hover {
-      background-color: #000;
-      color: #fff;
-    }
+    
   </style>
 </head>
 <body>
+  <h1></h1>
+  <span class="rating_stars rating_0">
+    <span class='s' data-low='0.5' data-high='1'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+    <span class='s' data-low='1.5' data-high='2'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+    <span class='s' data-low='2.5' data-high='3'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+    <span class='s' data-low='3.5' data-high='4'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+    <span class='s' data-low='4.5' data-high='5'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+          					
+    <span class='r r0_5' data-rating='1' data-value='0.5'></span>
+    <span class='r r1' data-rating='1' data-value='1'></span>
+    <span class='r r1_5' data-rating='15' data-value='1.5'></span>
+    <span class='r r2' data-rating='2' data-value='2'></span>
+    <span class='r r2_5' data-rating='25' data-value='2.5'></span>
+    <span class='r r3' data-rating='3' data-value='3'></span>
+    <span class='r r3_5' data-rating='35' data-value='3.5'></span>
+    <span class='r r4' data-rating='4' data-value='4'></span>
+    <span class='r r4_5' data-rating='45' data-value='4.5'></span>
+    <span class='r r5' data-rating='5' data-value='5'></span>
+  </span>
 
-  <h1>Experience Feedback</h1>
-
-  <div id="rating">
-    <i class="fa-solid fa-star" data-rating="1"></i>
-    <i class="fa-solid fa-star" data-rating="2"></i>
-    <i class="fa-solid fa-star" data-rating="3"></i>
+  <div class="values">
+    <div>
+      <label>Rating</label><input type="text" id="rating" value="0" />
+    </div>
+    <div>
+      <label>Rating Value</label><input type="text" name="rating" id="rating_val" value="0" />
+    </div>
   </div>
 
-  <div id="feedback" style="display: none;">
-    <textarea id="feedback-text" placeholder="Please provide feedback on your experience"></textarea>
-    <button type="submit" id="submit-feedback">Submit Feedback</button>
+  <div class="info">
+    <p>The above textboxes should be hidden fields, but have been made textboxes to display the values when you click.</p>
+    <p>The 'Rating' value can be used for class/id based changes to this if wanting to use a background sprite to manage the stars instead.</p>
   </div>
-
   <script>
-    var rating = document.getElementById("rating");
-    var feedback = document.getElementById("feedback");
-    var feedbackText = document.getElementById("feedback-text");
-    var submitFeedbackButton = document.getElementById("submit-feedback");
-
-    // Add a hover event to the stars
-    rating.addEventListener("mouseover", function(event) {
-      // Get the star that was hovered over
-      var star = event.target;
-
-      // Get the rating of the star
-      var ratingValue = star.getAttribute("data-rating");
-
-      // Highlight all the stars to the left of the hovered star
-      for (var i = 0; i < ratingValue; i++) {
-        rating.children[i].classList.add("highlighted");
-      }
+    jQuery(document).ready(function ($) {
+      $(".rating_stars span.r")
+        .hover(
+          function () {
+            // get hovered value
+            var rating = $(this).data("rating");
+            var value = $(this).data("value");
+            $(this)
+              .parent()
+              .attr("class", "")
+              .addClass("rating_stars")
+              .addClass("rating_" + rating);
+            highlight_star(value);
+          },
+          function () {
+            // get hidden field value
+            var rating = $("#rating").val();
+            var value = $("#rating_val").val();
+            $(this)
+              .parent()
+              .attr("class", "")
+              .addClass("rating_stars")
+              .addClass("rating_" + rating);
+            highlight_star(value);
+          }
+        )
+        .click(function () {
+          // Set hidden field value
+          var value = $(this).data("value");
+          $("#rating_val").val(value);
+    
+          var rating = $(this).data("rating");
+          $("#rating").val(rating);
+    
+          highlight_star(value);
+        });
+    
+      var highlight_star = function (rating) {
+        $(".rating_stars span.s").each(function () {
+          var low = $(this).data("low");
+          var high = $(this).data("high");
+          $(this).removeClass("active-high").removeClass("active-low");
+          if (rating >= high) $(this).addClass("active-high");
+          else if (rating == low) $(this).addClass("active-low");
+        });
+      };
     });
 
-    // Add a click event to the stars
-    rating.addEventListener("click", function(event) {
-      // Get the star that was clicked on
-      var star = event.target;
-
-      // Get the rating of the star
-      var ratingValue = star.getAttribute("data-rating");
-
-      // Highlight all the stars to the left of the clicked star
-      for (var i = 0; i < ratingValue; i++) {
-        rating.children[i].classList.add("highlighted");
-      }
-
-      // Prevent the default click behavior
-      event.preventDefault();
-    });
-
-    // Add a blur event to the stars
-    rating.addEventListener("mouseout", function(event) {
-      // Get the star that was blurred away from
-      var star = event.target;
-
-      // Get the rating of the star
-      var ratingValue = star.getAttribute("data-rating");
-
-      // Remove the highlighted class from all the stars to the left of the blurred star
-      for (var i = 0; i < ratingValue; i++) {
-        rating.children[i].classList.remove("highlighted");
-      }
-    });
-
-    // Add a submit event to the feedback form
-    submitFeedbackButton.addEventListener("click", function() {
-      // Send the feedback to an email address
-      var emailAddress = "feedback@example.com";
-      var email = "Subject: Experience Feedback\n
-
+  </script>
+</body>
+</html>
