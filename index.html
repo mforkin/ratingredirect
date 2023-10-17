@@ -5,10 +5,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Feedback</title>
   <style>
+    h1 {
+      font-size: 35px
+    }
+    h2 {
+      font-size: 25px
+    }
     .rating_faces {
       margin-top: 15px;
       display: inline-block;
-      font-size: 80px;
+      font-size: 120px;
       font-weight: 200;
       color: #918f8f;
       position: relative;
@@ -55,7 +61,7 @@
     }
 
     .rating_faces :not(.selected):hover i.fa-smile-o {
-      text-shadow: 2px 2px 14px #4b8722;
+      text-shadow: 0px 0px 14px #4b8722;
       transition: text-shadow 0.5s ease-in-out;
     }
 
@@ -77,6 +83,7 @@
     
     .rating_faces span {
       display: inline-block;
+      margin: 0 10px
     }
     
     /* Just to make things look pretty ;) */
@@ -142,6 +149,7 @@
 
     .links {
       margin-top: 10px;
+      font-size: 20px;
     }
     .email-link {
       display: none;
@@ -156,9 +164,15 @@
   <h1>Canyon Pain and Spine</h1>
   <h2>How did we do?</h2>
   <div class="rating_faces">
-    <span class='r' data-rating='2' data-value='2'><i class="fa fa-smile-o"></i></span>
-    <span class='r' data-rating='1' data-value='1'><i class="fa fa-meh-o"></i></span>
-    <span class='r' data-rating='0' data-value='0'><i class="fa fa-frown-o"></i></span>
+    <span class='r' data-rating='2' data-value='2'>
+      <i class="fa fa-smile-o"></i>
+    </span>
+    <span class='r' data-rating='1' data-value='1'>
+      <i class="fa fa-meh-o"></i>
+    </span>
+    <span class='r' data-rating='0' data-value='0'>
+      <i class="fa fa-frown-o"></i>
+    </span>
   </div>
 
   <div class="values" style="display: none;">
