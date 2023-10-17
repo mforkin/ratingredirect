@@ -5,85 +5,78 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Feedback</title>
   <style>
-    .rating_stars {
+    .rating_faces {
       margin-top: 15px;
       display: inline-block;
-      font-size: 20px;
+      font-size: 80px;
       font-weight: 200;
       color: #918f8f;
       position: relative;
     }
 
-    .rating_stars:hover {
+    .rating_faces .selected i.fa-frown-o {
+      text-shadow: 0px 0px 14px #fd6565;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+ 
+    .rating_faces .selected i.fa-meh-o {
+      text-shadow: 0px 0px 14px #378Bff;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces .selected i.fa-smile-o {
+      text-shadow: 2px 2px 14px #4b8722;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces :not(.selected) i.fa-frown-o {
+      text-shadow: 0;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+ 
+    .rating_faces :not(.selected) i.fa-meh-o {
+      text-shadow: 0;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces :not(.selected) i.fa-smile-o {
+      text-shadow: 0;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces :not(.selected):hover i.fa-frown-o {
+      text-shadow: 0px 0px 14px #fd6565;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+ 
+    .rating_faces :not(.selected):hover i.fa-meh-o {
+      text-shadow: 0px 0px 14px #378Bff;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces :not(.selected):hover i.fa-smile-o {
+      text-shadow: 2px 2px 14px #4b8722;
+      transition: text-shadow 0.5s ease-in-out;
+    }
+
+    .rating_faces .fa-frown-o {
+      color: #881c1c;
+    }
+
+    .rating_faces .fa-meh-o {
+      color: #1c3b88;
+    }
+
+    .rating_faces .fa-smile-o {
+      color: #2d881c;
+    }
+
+    .rating_faces:hover {
       cursor: pointer;
     }
     
-    .rating_stars span .fa,
-    .rating_stars span.active-low .fa-star-o,
-    .rating_stars span.active-high .fa-star-o {
-      display: none;
-    }
-    
-    .rating_stars span .fa-star-o {
+    .rating_faces span {
       display: inline-block;
-    }
-    
-    .rating_stars span.s.active-high .fa-star {
-      display: inline-block;
-      color: #feb645;
-    }
-    
-    .rating_stars span.s.active-low .fa-star-half-o {
-      display: inline-block;
-      color: #feb645;
-    }
-    
-    .rating_stars span.r {
-      position: absolute;
-      top: 0;
-      height: 20px;
-      width: 10px;
-      left: 0;
-    }
-    
-    .rating_stars span.r.r0_5 {
-      left: 0px;
-    }
-    .rating_stars span.r.r1 {
-      left: 10px;
-      width: 11px;
-    }
-    .rating_stars span.r.r1_5 {
-      left: 21px;
-      width: 13px;
-    }
-    .rating_stars span.r.r2 {
-      left: 34px;
-      width: 12px;
-    }
-    .rating_stars span.r.r2_5 {
-      left: 46px;
-      width: 12px;
-    }
-    .rating_stars span.r.r3 {
-      left: 58px;
-      width: 11px;
-    }
-    .rating_stars span.r.r3_5 {
-      left: 69px;
-      width: 12px;
-    }
-    .rating_stars span.r.r4 {
-      left: 81px;
-      width: 12px;
-    }
-    .rating_stars span.r.r4_5 {
-      left: 93px;
-      width: 12px;
-    }
-    .rating_stars span.r.r5 {
-      left: 105px;
-      width: 12px;
     }
     
     /* Just to make things look pretty ;) */
@@ -140,7 +133,10 @@
       max-width: 500px;
       margin: 20px auto;
     }
-    .google-review {
+    .review-link {
+      display: none;
+    }
+    .review-link.show {
       display: inline-block;
     }
 
@@ -149,7 +145,6 @@
     }
     .email-link {
       display: none;
-      margin-left: 10px;
     }
     .email-link.show {
       display: inline-block;
@@ -160,24 +155,11 @@
 <body>
   <h1>Canyon Pain and Spine</h1>
   <h2>How did we do?</h2>
-  <span class="rating_stars rating_0">
-    <span class='s' data-low='0.5' data-high='1'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-    <span class='s' data-low='1.5' data-high='2'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-    <span class='s' data-low='2.5' data-high='3'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-    <span class='s' data-low='3.5' data-high='4'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-    <span class='s' data-low='4.5' data-high='5'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-          					
-    <span class='r r0_5' data-rating='1' data-value='0.5'></span>
-    <span class='r r1' data-rating='1' data-value='1'></span>
-    <span class='r r1_5' data-rating='15' data-value='1.5'></span>
-    <span class='r r2' data-rating='2' data-value='2'></span>
-    <span class='r r2_5' data-rating='25' data-value='2.5'></span>
-    <span class='r r3' data-rating='3' data-value='3'></span>
-    <span class='r r3_5' data-rating='35' data-value='3.5'></span>
-    <span class='r r4' data-rating='4' data-value='4'></span>
-    <span class='r r4_5' data-rating='45' data-value='4.5'></span>
-    <span class='r r5' data-rating='5' data-value='5'></span>
-  </span>
+  <div class="rating_faces">
+    <span class='r' data-rating='2' data-value='2'><i class="fa fa-smile-o"></i></span>
+    <span class='r' data-rating='1' data-value='1'><i class="fa fa-meh-o"></i></span>
+    <span class='r' data-rating='0' data-value='0'><i class="fa fa-frown-o"></i></span>
+  </div>
 
   <div class="values" style="display: none;">
     <div>
@@ -189,41 +171,17 @@
   </div>
 
   <div class="links">
-    <div class="google-review">
-	<a href="https://g.page/r/CYvH-fkhA-RhEBE/review" target="_blank">Review us on Google</a>
+    <div class="review-link">
+	<a href="https://g.page/r/CYvH-fkhA-RhEBE/review" target="_blank">Give us a Review</a>
     </div>
     <div class="email-link">
-   	<a href="#" onclick="window.open('mailto:glendalereviews@canyonpain.com?subject=[Patient Feedback] [' + $('#rating_val').val() + ' stars] Unsatisfactory Experience')">Email us your concerns</a>
+   	<a href="#" onclick="window.open('mailto:glendalereviews@canyonpain.com?subject=[Patient Feedback] [' + $('#rating_val').val() + ' rating] Unsatisfactory Experience')">Give us a Review</a>
     </div>
   </div>
 
   <script>
     jQuery(document).ready(function ($) {
-      $(".rating_stars span.r")
-        .hover(
-          function () {
-            // get hovered value
-            var rating = $(this).data("rating");
-            var value = $(this).data("value");
-            $(this)
-              .parent()
-              .attr("class", "")
-              .addClass("rating_stars")
-              .addClass("rating_" + rating);
-            highlight_star(value);
-          },
-          function () {
-            // get hidden field value
-            var rating = $("#rating").val();
-            var value = $("#rating_val").val();
-            $(this)
-              .parent()
-              .attr("class", "")
-              .addClass("rating_stars")
-              .addClass("rating_" + rating);
-            highlight_star(value);
-          }
-        )
+      $(".rating_faces span")
         .click(function () {
           // Set hidden field value
           var value = $(this).data("value");
@@ -232,22 +190,22 @@
           var rating = $(this).data("rating");
           $("#rating").val(rating);
 
-	  if (value < 4) {
+	  if (value < 2) {
             $(".links .email-link").addClass("show");
+            $(".links .review-link").removeClass("show");
           } else {
             $(".links .email-link").removeClass("show");
+            $(".links .review-link").addClass("show");
           }
     
-          highlight_star(value);
+          unhighlight_face(value);
+
+          $(this).addClass("selected");
         });
     
-      var highlight_star = function (rating) {
-        $(".rating_stars span.s").each(function () {
-          var low = $(this).data("low");
-          var high = $(this).data("high");
-          $(this).removeClass("active-high").removeClass("active-low");
-          if (rating >= high) $(this).addClass("active-high");
-          else if (rating == low) $(this).addClass("active-low");
+      var unhighlight_face = function (rating) {
+        $(".rating_faces span").each(function () {
+          $(this).removeClass("selected");
         });
       };
     });
