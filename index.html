@@ -165,13 +165,13 @@
   <h2>How did we do?</h2>
   <div class="rating_faces">
     <span class='r' data-rating='2' data-value='2'>
-      <i class="fa fa-smile-o"></i>
+      <a href="https://g.page/r/CYvH-fkhA-RhEBE/review" target="_blank"><i class="fa fa-smile-o"></i></a>
     </span>
     <span class='r' data-rating='1' data-value='1'>
-      <i class="fa fa-meh-o"></i>
+      <a href="#" onclick="window.open('mailto:glendalereviews@canyonpain.com?subject=[Patient Feedback] [1 rating] Unsatisfactory Experience')"><i class="fa fa-meh-o"></i></a>
     </span>
     <span class='r' data-rating='0' data-value='0'>
-      <i class="fa fa-frown-o"></i>
+      <a href="#" onclick="window.open('mailto:glendalereviews@canyonpain.com?subject=[Patient Feedback] [0 rating] Unsatisfactory Experience')"><i class="fa fa-frown-o"></i></a>
     </span>
   </div>
 
@@ -181,15 +181,6 @@
     </div>
     <div>
       <label>Rating Value</label><input type="text" name="rating" id="rating_val" value="0" />
-    </div>
-  </div>
-
-  <div class="links">
-    <div class="review-link">
-	<a href="https://g.page/r/CYvH-fkhA-RhEBE/review" target="_blank">Give us a Review</a>
-    </div>
-    <div class="email-link">
-   	<a href="#" onclick="window.open('mailto:glendalereviews@canyonpain.com?subject=[Patient Feedback] [' + $('#rating_val').val() + ' rating] Unsatisfactory Experience')">Give us a Review</a>
     </div>
   </div>
 
@@ -204,14 +195,6 @@
           var rating = $(this).data("rating");
           $("#rating").val(rating);
 
-	  if (value < 2) {
-            $(".links .email-link").addClass("show");
-            $(".links .review-link").removeClass("show");
-          } else {
-            $(".links .email-link").removeClass("show");
-            $(".links .review-link").addClass("show");
-          }
-    
           unhighlight_face(value);
 
           $(this).addClass("selected");
